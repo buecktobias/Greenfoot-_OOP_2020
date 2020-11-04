@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Carrot
+comment1.params=
+comment1.target=Carrot()
+comment2.params=weight
+comment2.target=Carrot(int)
+comment3.params=
+comment3.target=int\ getWeight()
+comment4.params=newWeight
+comment4.target=void\ setWeight(int)
+numComments=5

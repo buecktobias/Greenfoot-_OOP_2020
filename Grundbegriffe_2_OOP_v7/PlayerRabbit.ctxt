@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=PlayerRabbit
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Wird\ einmal\ pro\ Zeiteinheit\ aufgerufen\r\n
+comment2.params=direction
+comment2.target=void\ setDirection(int)
+comment3.params=
+comment3.target=void\ moveUp()
+comment4.params=
+comment4.target=void\ moveLeft()
+comment5.params=
+comment5.target=void\ moveRight()
+comment6.params=
+comment6.target=void\ moveDown()
+comment7.params=
+comment7.target=void\ performMovement()
+comment8.params=
+comment8.target=void\ move()
+comment8.text=\r\n\ moves\ one\ step\ forward\r\n
+numComments=9
