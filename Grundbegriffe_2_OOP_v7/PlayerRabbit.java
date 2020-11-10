@@ -57,7 +57,7 @@ public class PlayerRabbit extends MovingActor {
     /**
      * Legt eine Karotte auf den Boden
      */
-    public void putCarrot(){
+    private void putCarrot(){
         if (this.currentCarrotCount > 0){
             Carrot newCarrot = new Carrot();
             this.currentCarrotCount--;
@@ -75,7 +75,7 @@ public class PlayerRabbit extends MovingActor {
     }
     //TODO: Steuerung über die Tasten W - A - S - D realisieren
     /**
-     *  Steuerung mit den Tasten W - A - S -D
+     *  Steuerung mit den Tasten
      */
     private void checkMovementKeys() {
         if (Greenfoot.isKeyDown(this.MOVE_UP_KEY)) {
@@ -89,10 +89,6 @@ public class PlayerRabbit extends MovingActor {
         }
     }
     
-    
-     /**
-     * moves one step forward
-     */
 
 
 }

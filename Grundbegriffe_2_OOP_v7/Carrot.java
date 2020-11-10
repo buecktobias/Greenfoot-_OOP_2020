@@ -1,7 +1,7 @@
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 
-public class Carrot extends Actor
+public class Carrot extends Item
 {
     //TODO: Identifiziere Attribute, Methoden und Konstruktoren 
     //und markiere diese entsprechend durch Kommentare.

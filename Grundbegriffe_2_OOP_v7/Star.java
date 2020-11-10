@@ -1,7 +1,7 @@
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
 
-public class Star extends Actor {
+public class Star extends Item {
 	
 	public Star(){
 		getImage().scale(40, 40);

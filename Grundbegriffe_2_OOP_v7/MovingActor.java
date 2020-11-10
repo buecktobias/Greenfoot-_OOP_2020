@@ -10,7 +10,7 @@ import greenfoot.Greenfoot;
  * Ac
  * 
  */
-public class MovingActor extends Actor {
+public abstract class MovingActor extends Entity {
 
     private Direction localRotation; // aktuelle Richtung
     
@@ -97,7 +97,7 @@ public class MovingActor extends Actor {
             return false;
         }
 
-        List<Rock> rocks = myWorld.getObjectsAt(x, y, Rock.class);
+        List<BlockingObject> rocks = myWorld.getObjectsAt(x, y, BlockingObject.class);
         if (rocks.isEmpty()) {
             return true;
         }
