@@ -9,20 +9,38 @@ public class PlayerRabbit extends MovingActor {
     private final String MOVE_DOWN_KEY = "S";
     private final String PUT_CARROT_KEY = "P";
     
-    private final int MAX_CARROTS = 20;
-    public int currentCarrotCount = MAX_CARROTS;
+    private int MAX_CARROTS;
+    public int currentCarrotCount;
     
     //Attribute
     private int life;
     
     
     //Konstruktoren
+    /**
+     * Konstruktor ohne Parameter
+     */
     public PlayerRabbit(){
        this.life = 100;
+       this.MAX_CARROTS = 20;
+       this.currentCarrotCount = this.MAX_CARROTS;
     }
     
+    /**
+     * Konstruktor mit Leben
+     */
     public PlayerRabbit(int newLife){
        this.life = newLife;
+       this.MAX_CARROTS = 20;
+       this.currentCarrotCount = this.MAX_CARROTS;
+    }
+    /**
+     * Konstruktor mit Leben und Anzahl Karotten.
+     */
+    public PlayerRabbit(int newLife, int maxCarrots){
+        this.life = newLife;
+        this.MAX_CARROTS = maxCarrots;
+        this.currentCarrotCount = this.MAX_CARROTS;
     }
     
     //Methoden
@@ -31,32 +49,14 @@ public class PlayerRabbit extends MovingActor {
      */
     public void act() {
         this.listenToKeys();
+        this.draw(this.life);
     }
+
+   
     
-    public void setDirection(int direction){
-        this.setImageRotationAndImage(direction);
-    }
-    
-    public void moveUp(){
-        this.setDirection(Direction.UP);
-        this.move();
-    }
-    
-    public void moveLeft(){
-        this.setDirection(Direction.LEFT);
-        this.move();
-    }
-    
-    public void moveRight(){
-        this.setDirection(Direction.RIGHT);
-        this.move();
-    }
-    
-    public void moveDown(){
-        this.setDirection(Direction.DOWN);
-        this.move();
-    }
-    
+    /**
+     * Legt eine Karotte auf den Boden
+     */
     public void putCarrot(){
         if (this.currentCarrotCount > 0){
             Carrot newCarrot = new Carrot();
@@ -64,15 +64,20 @@ public class PlayerRabbit extends MovingActor {
             this.getWorld().addObject(newCarrot, this.getX(), this.getY());
         }
     }
-    
+    /**
+     * Reagieren auf Tasten drücke
+     */
     private void listenToKeys(){
-        this.performMovement();
+        this.checkMovementKeys();
         if (Greenfoot.isKeyDown(this.PUT_CARROT_KEY)){
             this.putCarrot();
         }
     }
     //TODO: Steuerung über die Tasten W - A - S - D realisieren
-    private void performMovement() {
+    /**
+     *  Steuerung mit den Tasten W - A - S -D
+     */
+    private void checkMovementKeys() {
         if (Greenfoot.isKeyDown(this.MOVE_UP_KEY)) {
             this.moveUp();
         }if(Greenfoot.isKeyDown(this.MOVE_LEFT_KEY)){
@@ -88,8 +93,6 @@ public class PlayerRabbit extends MovingActor {
      /**
      * moves one step forward
      */
-    public void move(){
-        move(1);
-    }
+
 
 }

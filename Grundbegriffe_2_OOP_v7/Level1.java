@@ -16,8 +16,14 @@ public class Level1 extends RabbitWorld
     public Level1()
     {
         super();
-        PlayerRabbit rabbit = new PlayerRabbit();
+        PlayerRabbit rabbit = new PlayerRabbit(5, 3);
         this.addObject(rabbit, 4, 4);
+        
+        Rock newRock = new Rock();
+        this.addObject(newRock, 5, 2);
+        
+        Rock newRock2 = new Rock();
+        this.addObject(newRock2, 2, 2);
         
         /*zu Aufgabe1: 
          * b)  Erzeuge einen neuen Fels (Rock). Platziere den Fels auf (5, 5).

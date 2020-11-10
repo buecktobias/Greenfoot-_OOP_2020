@@ -1,6 +1,6 @@
 import greenfoot.Actor;
 
-public class Rock extends Actor
+public class Rock extends Actor implements BlockingObject
 {
 	
 	

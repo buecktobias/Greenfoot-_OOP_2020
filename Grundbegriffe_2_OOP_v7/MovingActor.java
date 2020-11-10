@@ -11,12 +11,8 @@ import greenfoot.Greenfoot;
  * 
  */
 public class MovingActor extends Actor {
-    private static final int UP = 0;
-    private static final int RIGHT = 1;
-    private static final int DOWN = 2;
-    private static final int LEFT = 3;
 
-    private int localRotation; // aktuelle Richtung
+    private Direction localRotation; // aktuelle Richtung
     
     private GreenfootImage imageRight;
     private GreenfootImage imageLeft;
@@ -32,11 +28,54 @@ public class MovingActor extends Actor {
         currentImage = imageRight;
         imageLeft.mirrorVertically();
 
-        setImageRotationAndImage(RIGHT);
+        setImageRotationAndImage(Direction.RIGHT);
     }
     
 
+     /**
+     * Der Hase bewegt sich nach oben!
+     * 
+     */
+    public void moveUp(){
+        this.setDirection(Direction.UP);
+        this.move();
+    }
     
+    /**
+     * Der Hase bewegt sich nach Links.
+     */
+    public void moveLeft(){
+        this.setDirection(Direction.LEFT);
+        this.move();
+    }
+    /**
+     * Der Hase bewegt sich nach rechts!
+     */
+    
+    public void moveRight(){
+        this.setDirection(Direction.RIGHT);
+        this.move();
+    }
+    
+    
+    /**
+     * Der Hase bewegt sich nach unten.
+     */
+    public void moveDown(){
+        this.setDirection(Direction.DOWN);
+        this.move();
+    }    
+    public void move(){
+        if (this.canMove()){
+            move(1);
+        }
+    }
+        /**
+     * Der Hase verändert die Blickrichtung
+     */
+    public void setDirection(Direction direction){
+        this.setImageRotationAndImage(direction);
+    }
     /**
      * Überprüft ob der Hase einen Schritt nach vorne laufen kann ohne auf ein Hindernis (Wand/Stein) zu treffen.
      */
@@ -52,7 +91,7 @@ public class MovingActor extends Actor {
         int x = getNextX(distance);
         int y = getNextY(distance);
 
-        if (x >= myWorld.getWidth() || y >= myWorld.getHeight() - 1) {
+        if (x >= myWorld.getWidth() || y >= myWorld.getHeight()) {
             return false;
         } else if (x < 0 || y < 0) {
             return false;
@@ -103,50 +142,12 @@ public class MovingActor extends Actor {
         return y;
     }
 
-    /**
-     * Nach links drehen.
-     */
-    public void turnLeft() {
-        switch (localRotation) {
-        case DOWN:
-            setImageRotationAndImage(RIGHT);
-            break;
-        case RIGHT:
-            setImageRotationAndImage(UP);
-            break;
-        case UP:
-            setImageRotationAndImage(LEFT);
-            break;
-        case LEFT:
-            setImageRotationAndImage(DOWN);
-            break;
-        }
-    }
-
-    /**
-     * Nach rechts drehen
-     */
-    public void turnRight() {
-        switch (localRotation) {
-        case DOWN:
-            setImageRotationAndImage(LEFT);
-            break;
-        case RIGHT:
-            setImageRotationAndImage(DOWN);
-            break;
-        case UP:
-            setImageRotationAndImage(RIGHT);
-            break;
-        case LEFT:
-            setImageRotationAndImage(UP);
-            break;
-        }
-    }
+    
 
     /**
      * Setze Richtung des Hasen.
      */
-    public void setImageRotationAndImage(int direction) {
+    public void setImageRotationAndImage(Direction direction) {
         this.localRotation = direction;
         switch (direction) {
         case DOWN:
@@ -212,8 +213,8 @@ public class MovingActor extends Actor {
     }
     
     /**
-	* Liefert das Objekt vom Typ RabbitWorld in dem der Hase sich befindet.
-	**/
+    * Liefert das Objekt vom Typ RabbitWorld in dem der Hase sich befindet.
+    **/
     public RabbitWorld getRabbitWorld(){
         return getWorldOfType(RabbitWorld.class);
     }

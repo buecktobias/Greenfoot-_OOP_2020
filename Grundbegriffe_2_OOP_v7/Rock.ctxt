@@ -2,5 +2,5 @@
 comment0.target=Rock
 comment1.params=
 comment1.target=void\ hit()
-comment1.text=\r\n\ Will\ be\ called\ on\ a\ hit.\r\n
+comment1.text=\n\ Will\ be\ called\ on\ a\ hit.\n
 numComments=2
