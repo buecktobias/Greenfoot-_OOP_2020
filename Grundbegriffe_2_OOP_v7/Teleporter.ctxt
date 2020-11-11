@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Teleporter
+comment0.text=\n\ Write\ a\ description\ of\ class\ Teleporter\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=nextWorld
+comment1.target=Teleporter(greenfoot.World)
+comment2.params=pr
+comment2.target=void\ teleport(PlayerRabbit)
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Teleporter\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=4

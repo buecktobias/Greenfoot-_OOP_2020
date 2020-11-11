@@ -25,6 +25,8 @@ public class Level1 extends RabbitWorld
         Rock newRock2 = new Rock();
         this.addObject(newRock2, 2, 2);
         
+        Teleporter t1 = new Teleporter(new Level2());
+        this.addObject(t1, 6, 6);
         /*zu Aufgabe1: 
          * b)  Erzeuge einen neuen Fels (Rock). Platziere den Fels auf (5, 5).
          * c)  Erstelle eine Karotte (Carrot) und platziere sie auf dem Feld (1, 5).

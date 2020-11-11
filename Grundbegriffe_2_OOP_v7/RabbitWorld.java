@@ -9,7 +9,6 @@ import java.lang.reflect.Array;
  */
 public class RabbitWorld extends World
 {
-    
     /**
      * Erzeuge eine Welt.
      */

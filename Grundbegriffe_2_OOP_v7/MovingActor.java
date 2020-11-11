@@ -12,11 +12,10 @@ import greenfoot.Greenfoot;
  */
 public abstract class MovingActor extends Entity {
 
-    private Direction localRotation; // aktuelle Richtung
+
     
     private GreenfootImage imageRight;
     private GreenfootImage imageLeft;
-    private GreenfootImage currentImage;
     
 
     /**
@@ -25,7 +24,7 @@ public abstract class MovingActor extends Entity {
     public MovingActor() {
         imageRight = new GreenfootImage(getImage());
         imageLeft = new GreenfootImage(getImage());
-        currentImage = imageRight;
+        this.currentImage = imageRight;
         imageLeft.mirrorVertically();
 
         setImageRotationAndImage(Direction.RIGHT);
@@ -70,12 +69,7 @@ public abstract class MovingActor extends Entity {
             move(1);
         }
     }
-        /**
-     * Der Hase verändert die Blickrichtung
-     */
-    public void setDirection(Direction direction){
-        this.setImageRotationAndImage(direction);
-    }
+
     /**
      * Überprüft ob der Hase einen Schritt nach vorne laufen kann ohne auf ein Hindernis (Wand/Stein) zu treffen.
      */
@@ -112,7 +106,7 @@ public abstract class MovingActor extends Entity {
      */
     public int getNextX(int distance) {
         int x = getX();
-        switch (localRotation) {
+        switch (this.localRotation) {
         case RIGHT:
             x = x + distance;
             break;
@@ -144,32 +138,7 @@ public abstract class MovingActor extends Entity {
 
     
 
-    /**
-     * Setze Richtung des Hasen.
-     */
-    public void setImageRotationAndImage(Direction direction) {
-        this.localRotation = direction;
-        switch (direction) {
-        case DOWN:
-            setImage(imageRight);
-            setRotation(90);
-            break;
-        case RIGHT:
-            setImage(imageRight);
-            setRotation(0);
-            break;
-        case UP:
-            setImage(imageLeft);
-            setRotation(-90);
-            break;
-        case LEFT:
-            setImage(imageLeft);
-            setRotation(180);
-            break;
-        default:
-            break;
-        }
-    }
+
 
     /**
      * Tu, was ein Hase so tut
@@ -177,67 +146,6 @@ public abstract class MovingActor extends Entity {
     public void act() {
         super.act();
     }
-    
-     /**
-     * Gibt den Text über dem Character aus.
-     */
-    public void say(boolean text){
-        say(String.valueOf(text));
-    }
-    
-     /**
-     * Gibt den Text über dem Character aus.
-     */
-    public void say(int text){
-        say(String.valueOf(text));
-    }
-    
-     /**
-     * Gibt den Text über dem Character aus.
-     */
-    public void say(double text){
-        say(String.valueOf(text));
-    }
-    
-    /**
-     * Gibt den Text über dem Character aus.
-     */
-    public void say(String text){
-        int y = getY() - 1;
-        if (y < 0){
-            y = 1;
-        }
-        getWorld().showText(text, getX(), y);
-        System.out.println("a " + this.getClass().getName() + " says: " + text); 
-        Greenfoot.delay(1);
-    }
-    
-    /**
-    * Liefert das Objekt vom Typ RabbitWorld in dem der Hase sich befindet.
-    **/
-    public RabbitWorld getRabbitWorld(){
-        return getWorldOfType(RabbitWorld.class);
-    }
-    
-    public void setImage(GreenfootImage image){
-        currentImage = image;
-        super.setImage(new GreenfootImage(currentImage));
-    }
-    
-    
-    /**
-     * Zeichnet den übergebenen Text auf das aktuelle Bild der Figur.
-     */
-    public void draw(String text){
-        super.setImage(new GreenfootImage(currentImage));
-        getImage().drawString(text, 0, 10);
-    }
-    
-    /**
-     * Zeichnet den Wert auf das aktuelle Bild der Figur.
-     */
-    public void draw(int value){        
-        draw(String.valueOf(value));
-    }
+   
     
 }
