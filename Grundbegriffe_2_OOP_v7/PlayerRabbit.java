@@ -8,7 +8,7 @@ public class PlayerRabbit extends MovingActor {
     private final String MOVE_UP_KEY = "W";
     private final String MOVE_DOWN_KEY = "S";
     private final String PUT_CARROT_KEY = "P";
-    
+    private Car drivingCar = null;
     private int MAX_CARROTS;
     public int currentCarrotCount;
     
@@ -48,8 +48,10 @@ public class PlayerRabbit extends MovingActor {
      * Wird einmal pro Zeiteinheit aufgerufen
      */
     public void act() {
+        this.getCar();
         this.listenToKeys();
         this.draw(this.life);
+        this.drive();
     }
 
    
@@ -71,6 +73,17 @@ public class PlayerRabbit extends MovingActor {
         this.checkMovementKeys();
         if (Greenfoot.isKeyDown(this.PUT_CARROT_KEY)){
             this.putCarrot();
+        }
+    }
+    private void getCar(){
+        if(!this.getIntersectingObjects(Car.class).isEmpty()){
+            Car c = this.getIntersectingObjects(Car.class).get(0);
+            this.drivingCar = c;
+        }
+    }
+    private void drive(){
+        if (this.drivingCar != null){
+            this.drivingCar.setLocation(this.getX(), this.getY());
         }
     }
     //TODO: Steuerung über die Tasten W - A - S - D realisieren
